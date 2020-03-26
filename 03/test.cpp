@@ -1,7 +1,7 @@
 #include <string>
 #include "matrix_class.h"
 
-std :: string b_to_s(bool b){
+std :: string b_to_s(const bool b){
     if(b)
         return "true";
     else

@@ -26,16 +26,16 @@ void Matrix :: set(){
     }
 }
 
-int Matrix :: get_rows(){
+int Matrix :: get_rows() const{
     return rows_n;
 }
 
-int Matrix :: get_columns(){
+int Matrix :: get_columns() const{
     return columns_m;
 }
 
 
-void Matrix :: print(){
+void Matrix :: print() const{
     for(int i = 0; i < columns_m; i++)
         std :: cout << "______";
     std :: cout << std :: endl;
@@ -65,7 +65,7 @@ int& Index :: operator [] (int cols) const{
     return a.mtrx[rows][cols];
 }
 
-bool Matrix :: operator == (const Matrix &a){
+bool Matrix :: operator == (const Matrix &a) const{
     if(columns_m != a.columns_m || rows_n != a.rows_n)
         return false;
     for(int i = 0; i < a.rows_n; i++)

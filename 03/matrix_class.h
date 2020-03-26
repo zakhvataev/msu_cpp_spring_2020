@@ -10,12 +10,12 @@ public:
     Matrix(void);
     Matrix(int rows_n, int columns_m);
     void set();
-    int get_rows();
-    int get_columns();
-    void print();
+    int get_rows()const;
+    int get_columns()const;
+    void print() const;
     void operator = (const Matrix &a);
     void operator *= (int x);
-    bool operator == (const Matrix &a);
+    bool operator == (const Matrix &a) const;
     Index operator [] (int rows) const;
     ~Matrix();
 };
