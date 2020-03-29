@@ -1,30 +1,37 @@
 #include <iostream>
 
-class Index;
-
 class Matrix{
-    friend class Index;
-    int rows_n, columns_m;
+    size_t rows_n, columns_m;
     int **mtrx;
+
+    class Row{
+        size_t len;
+        int* arr;
+    public:
+        Row(int*, size_t);
+        int& operator[](const size_t) ;
+        const int& operator[](const size_t) const;
+        ~Row();
+    };
 public:
     Matrix(void);
-    Matrix(int rows_n, int columns_m);
-    void set();
-    int get_rows()const;
-    int get_columns()const;
-    void print() const;
-    void operator = (const Matrix &a);
-    void operator *= (int x);
-    bool operator == (const Matrix &a) const;
-    Index operator [] (int rows) const;
-    ~Matrix();
-};
+    Matrix(size_t, size_t);
 
-class Index
-{
-    const Matrix &a;
-    int rows;
-public:
-    Index(const Matrix& m, int row) : a(m), rows(row) {};
-    int& operator [] (int cols) const;
+    void set(void);
+
+    size_t get_rows(void)const;
+    size_t get_columns(void)const;
+
+    void print(void) const;
+
+    void operator = (const Matrix &);
+    Matrix& operator *= (int);
+
+    bool operator == (const Matrix &) const;
+    bool operator != (const Matrix &) const;
+
+    Row operator [] (const size_t);
+    const Row operator[](const size_t) const;
+    
+    ~Matrix();
 };
