@@ -6,14 +6,14 @@ Matrix :: Row :: Row(int* arr1, size_t cols){
 }
 
 int& Matrix :: Row :: operator [] (size_t j){
-    if(j > len || j < 0){
+    if(j > len){
         throw std :: out_of_range("BadIndex1");
     }
     return arr[j];
 }
 
 const int& Matrix:: Row :: operator [] (size_t j) const{
-    if(j > len || j < 0)
+    if(j > len)
         throw std :: out_of_range("BadIndex2");
     return arr[j];
 }
@@ -72,14 +72,14 @@ void Matrix :: print() const{
 }
 
 Matrix::Row Matrix::operator[](size_t i) {
-    if (i > columns_m || i < 0) {
+    if (i > columns_m) {
         throw std::out_of_range("BadIndex[][!]");
     }
     return Matrix::Row(mtrx[i], columns_m);
 }
 
 const Matrix::Row Matrix::operator[](size_t i) const {
-    if (i > columns_m || i < 0) {
+    if (i > columns_m) {
         throw std::out_of_range("BadIndex[][!]");
     }
     return Matrix::Row(mtrx[i], columns_m);
@@ -96,13 +96,7 @@ bool Matrix :: operator == (const Matrix &a) const{
 }
 
 bool Matrix :: operator != (const Matrix &a) const{
-    if(columns_m != a.columns_m || rows_n != a.rows_n)
-        return true;
-    for(size_t i = 0; i < a.rows_n; i++)
-        for(size_t j = 0; j < a.columns_m; j++)
-            if(mtrx[i][j] != a.mtrx[i][j])
-                return true;
-    return false;
+    return !(*this == a);
 }
 
 Matrix& Matrix :: operator *= (int x){
