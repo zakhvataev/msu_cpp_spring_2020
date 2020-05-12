@@ -1,7 +1,6 @@
 #include <iostream>
 #include <iterator>
 
-
 template <class T>
 class Allocator
 {
